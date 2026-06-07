@@ -55,17 +55,17 @@ function renderPortfolio(items) {
             div.innerHTML = `
                 <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" class="w-full h-auto transition-transform duration-300 group-hover:scale-105">
                 <div class="p-4">
-                    <h4 class="text-sm font-medium text-slate-700">${item.title}</h4>
-                    ${item.description ? `<p class="text-xs text-slate-600 mt-2">${item.description}</p>` : ''}
-                    ${item.tools ? `<p class="text-xs text-slate-500 mt-2"><strong>Tools:</strong> ${item.tools}</p>` : ''}
+                    <h4 class="text-base font-semibold text-slate-800">${item.title}</h4>
+                    ${item.description ? `<p class="text-sm text-slate-600 mt-3 leading-relaxed line-clamp-4">${item.description}</p>` : ''}
+                    ${item.tools ? `<p class="text-xs text-slate-500 mt-3"><strong>Tools:</strong> ${item.tools}</p>` : ''}
                 </div>
             `;
         } else {
             div.innerHTML = `
                 <div class="p-4">
-                    <h4 class="text-sm font-medium text-slate-700">${item.title}</h4>
-                    ${item.description ? `<p class="text-xs text-slate-600 mt-2">${item.description}</p>` : ''}
-                    ${item.tools ? `<p class="text-xs text-slate-500 mt-2"><strong>Tools:</strong> ${item.tools}</p>` : ''}
+                    <h4 class="text-base font-semibold text-slate-800">${item.title}</h4>
+                    ${item.description ? `<p class="text-sm text-slate-600 mt-3 leading-relaxed line-clamp-4">${item.description}</p>` : ''}
+                    ${item.tools ? `<p class="text-xs text-slate-500 mt-3"><strong>Tools:</strong> ${item.tools}</p>` : ''}
                 </div>
             `;
         }
