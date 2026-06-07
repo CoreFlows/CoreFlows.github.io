@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onFlow - Data Visualization Services</title>
+    <meta name="description" content="onFlow offers expert data visualization services including dashboards, infographics, and interactive visuals to turn complex data into clear insights.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Syne', 'serif'] },
+          colors: {
+            navy: { 50:'#f0f3f9', 100:'#dce3f0', 200:'#b9c7e1', 300:'#8da3cb', 400:'#617fb3', 500:'#3d5a8a', 600:'#2c4270', 700:'#1e2f53', 800:'#141f3a', 900:'#0b1224', 950:'#060a14' },
+            accent: { 50:'#eef2ff', 100:'#e0e7ff', 200:'#c7d2fe', 300:'#a5b4fc', 400:'#818cf8', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca', 800:'#3730a3', 900:'#312e81' },
+          }
+        }
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles/main.css">
+
+
+    <style>
+      * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+      .card-premium {
+        background: #fff;
+        border: 1px solid #e8ecf2;
+        border-radius: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03);
+        transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      }
+      .card-premium:hover {
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.06);
+        transform: translateY(-3px);
+      }
+
+      .stat-card { position: relative; overflow: hidden; }
+      .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #6366f1, transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .stat-card:hover::before { opacity: 1; }
+
+      .text-gradient-accent {
+        background: linear-gradient(135deg, #818cf8, #6366f1, #4f46e5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #6366f1;
+      }
+
+      .divider-accent { height: 1px; background: linear-gradient(90deg, transparent, #c7d2fe, transparent); opacity: 0.6; }
+
+      #portfolio-grid > * {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #e8ecf2;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03);
+        transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        background: #fff;
+      }
+      #portfolio-grid > *:hover {
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.06);
+        transform: translateY(-4px);
+      }
+      #portfolio-grid > * img {
+        transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+        display: block;
+        width: 100%;
+      }
+      #portfolio-grid > *:hover img {
+        transform: scale(1.03);
+      }
+      .filter-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-500, #6366f1);
+    color: var(--accent-500, #6366f1);
+}
+
+.filter-btn.active {
+    background: var(--accent-500, #6366f1);
+    border-color: var(--accent-500, #6366f1);
+    color: white;
+}
+    </style>
+
+<script>
+window.addEventListener('load', function() {
+  if (window.location.hash === '#contact') {
+    // Retry to handle dynamically loaded portfolio images shifting layout
+    const attempts = [200, 600, 1200];
+    attempts.forEach(delay => {
+      setTimeout(() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'auto' });
+      }, delay);
+    });
+  }
+});
+</script>
+</head>
+<body>
+    <main class="bg-white text-slate-900">
+        <!-- Header -->
+<header class="max-w-7xl mx-auto px-6 py-5">
+    <div class="flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" fill="#6366f1" opacity="0.9"/>
+                  <path d="M12 2L12 22" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                  <path d="M2 8L22 8" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                  <path d="M2 16L22 16" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                </svg>
+            </div>
+            <span class="text-lg font-semibold tracking-tight text-navy-900">onFlow</span>
+        </a>
+        <nav class="hidden sm:flex items-center gap-8 text-sm text-gray-500">
+            <a href="/" class="hover:text-navy-900 transition-colors">Home</a>
+            <a href="/#work" class="hover:text-navy-900 transition-colors">Work</a>
+        </nav>
+        <a href="#contact" class="px-5 py-2 text-sm font-medium text-white bg-accent-500 rounded-lg hover:bg-accent-600 transition">
+            Contact
+        </a>
+    </div>
+</header>
+
+<!-- Hero + Services -->
+<section class="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-accent-50/30 py-16 md:py-24 w-full">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-navy-200/15 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-300/40 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-[56px] font-light leading-[1.1] tracking-tight">
+                Operational systems, workflows,
+                <span class="font-serif font-semibold text-gradient-accent"> and data design</span>
+            </h1>
+            <p class="mt-5 text-lg text-slate-500 leading-relaxed font-light">
+                Dashboards, reporting, and internal tools for teams working with complex data and processes.
+            </p>
+        </div>
+
+<div class="flex items-center gap-3 mb-8 justify-center">
+    <div class="divider-accent flex-1"></div>
+    <span class="section-label">What I Do</span>
+    <div class="divider-accent flex-1"></div>
+</div>
+<div class="grid sm:grid-cols-3 lg:grid-cols-3 gap-5">
+
+    <div class="card-premium stat-card p-6">
+        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+            <i class="fas fa-gauge-high text-xl text-accent-500"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Dashboards & Reporting Systems</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+            Operational dashboards and reporting interfaces for finance and B2B
+        </p>
+    </div>
+
+    <div class="card-premium stat-card p-6">
+        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+            <i class="fas fa-file-powerpoint text-xl text-accent-500"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Internal Tools</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+            Operational interfaces replacing spreadsheets and generic software for finance and B2B operators.
+        </p>
+    </div>
+
+        <div class="card-premium stat-card p-6">
+        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+            <i class="fas fa-file-powerpoint text-xl text-accent-500"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Workflow Design & Automation</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+            Connecting systems, automating repetitive processes, and adding AI layers to operational workflows.
+        </p>
+    </div>
+</div>
+    </div>
+</section>
+
+<!-- Portfolio -->
+<section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+    
+    <div class="flex items-center gap-3 mb-8" id="work">
+        <div class="divider-accent flex-1"></div>
+        <span class="section-label">Portfolio</span>
+        <div class="divider-accent flex-1"></div>
+    </div>
+
+    <!-- Filter Menu -->
+<div class="flex flex-wrap gap-2 mb-10 justify-between" id="filter-menu">
+    <div class="flex gap-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+        <button class="filter-btn" data-filter="tools">Internal Tools</button>
+        <button class="filter-btn" data-filter="workflow">Workflows</button>
+    </div>
+</div>
+    <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Portfolio items will be inserted here by JavaScript -->
+    </div>
+
+</section>
+
+        <!-- Contact -->
+        <section class="bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 relative">
+                <div class="flex items-center gap-3 mb-3 justify-center">
+                    <div class="divider-accent flex-1 max-w-[60px]"></div>
+                    <span class="section-label">Contact</span>
+                    <div class="divider-accent flex-1 max-w-[60px]"></div>
+                </div>
+                <h2 id="contact" class="text-3xl font-serif font-semibold mb-4 text-center" style="scroll-margin-top: 100px;">Let's Work Together</h2>
+                <p class="text-slate-600 max-w-2xl mb-8 leading-relaxed text-center mx-auto">
+                    Have a question or a project in mind? Drop a message and I'll get back to you.
+                </p>
+
+                <form id="contact-form" class="max-w-md space-y-4 mx-auto" action="https://formspree.io/f/meednonb" method="POST">
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Your email"
+                        class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100"
+                    />
+                    <textarea
+                        name="message"
+                        required
+                        rows="4"
+                        placeholder="Your message"
+                        class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        class="bg-black text-white px-6 py-2 rounded-xl hover:bg-slate-800 transition"
+                    >
+                        Send Message
+                    </button>
+                    <div id="form-status" class="hidden text-sm py-2"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-slate-500 flex items-center justify-center gap-4 text-center">
+                <div class="w-6 h-6 rounded-md bg-indigo-100 flex items-center justify-center">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" fill="#6366f1" opacity="0.9"/>
+                      <path d="M12 2L12 22" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                      <path d="M2 8L22 8" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                      <path d="M2 16L22 16" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                    </svg>
+                </div>
+                © <span id="year"></span> onFlow. All rights reserved.
+                <a href="https://www.linkedin.com/in/dmitri-lant" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-accent-500 transition">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

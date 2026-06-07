@@ -1,0 +1,40 @@
+[
+       {
+    "id": "live-global-market-pulse-dashboard-design-development",
+    "title": "Live Global Market Pulse Dashboard Design & Development",
+    "imageUrl": "./img/Market_Pulse_Dash.png",
+    "tags": ["dashboard"]
+  },  
+   {
+    "id": "real-estate-investment-portfolio-dashboard-design-development",
+    "title": "Real Estate Investment Portfolio Dashboard Design & Development",
+    "imageUrl": "./img/RE_Dash.png",
+    "tags": ["dashboard"]
+  },
+  {
+    "id": "investment-fund-portfolio-dashboard-design-development",
+    "title": "Investment Fund Portfolio Dashboard Design & Development",
+    "imageUrl": "./img/Fund_Portfolio_Dash.png",
+    "tags": ["dashboard"]
+  }, 
+  {
+    "id": "bitcoin-intelligence-dashboard-design-development",
+    "title": "Bitcoin Intelligence Dashboard Design & Development + Tool",
+    "imageUrl": "./img/Bitcoin_Dash.png",
+    "tags": ["dashboard", "tools"]
+  },
+  
+  {
+    "id": "token-sales-launchpad---token-metrics-dashboard-de",
+    "title": "Workflow and Tool: Token Sales Launchpad - Token Metrics Dashboard Design",
+    "imageUrl": "./img/token-sales-launchpad---token-metrics-dashboard-de.jpg",
+    "tags": ["workflow", "tools"]
+  },
+
+  {
+    "id": "digital-assets-volatility-index:-financial-researc",
+    "title": "WorkflowDigital Assets Volatility Index: Financial Research Report Design",
+    "imageUrl": "./img/digital-assets-volatility-index:-financial-researc.jpg",
+    "tags": ["workflow"]
+  }
+]
