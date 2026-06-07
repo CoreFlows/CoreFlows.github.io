@@ -83,7 +83,7 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     const statusDiv = document.getElementById('form-status');
 
     try {
-        const res = await fetch("https://formspree.io/f/meednonb", {
+        const res = await fetch("https://formspree.io/f/maqzevaq", {
             method: "POST",
             body: data,
             headers: {
