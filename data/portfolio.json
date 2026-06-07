@@ -13,7 +13,7 @@
     "title": "DealFlow - Internal CRM designed specifically for VC",
         "description": "Custom deal flow CRM designed for venture capital firms, angel investors, and private equity teams. The platform provides a structured workflow for managing opportunities from sourcing and screening through due diligence and investment decisions.\n\nAirtable powers the underlying data model, storing startup profiles, investment stages, founder interactions, and internal evaluations. Workflow automations built with n8n handle stage transitions, notifications, task creation, and reporting processes.\n\nThe system replaces fragmented spreadsheets and generic project management tools with a centralized investment workflow tailored specifically to deal management operations.",
     "imageUrl": "./img/CV_DealFlow.png",
-    "tags": ["workflow"]
+    "tags": ["workflow", "tools"]
   },       
   {
     "id": "live-global-market-pulse-dashboard-design-development",
@@ -29,7 +29,7 @@
     "imageUrl": "./img/RE_Dash.png",
         "description": "Portfolio management dashboard designed for real estate investors to monitor property performance, portfolio allocation, occupancy metrics, rental income, and investment returns.\n\nThe platform combines data from multiple property and financial data sources into a centralized reporting environment. Workflow automations synchronize portfolio updates, calculate performance metrics, and generate consolidated portfolio views.\n\nInteractive dashboards provide investors with a clear overview of portfolio health, enabling faster analysis and more informed investment decisions across multiple properties and markets.",
 
-    "tags": ["dashboard"]
+    "tags": ["dashboard", "tools"]
   },
   {
     "id": "investment-fund-portfolio-dashboard-design-development",
@@ -44,7 +44,7 @@
     "title": "Bitcoin Intelligence Dashboard Design & Development",
     "imageUrl": "./img/Bitcoin_Dash.png",
     "description": "Bitcoin intelligence dashboard designed to consolidate market, on-chain, derivatives, and sentiment data into a single research and monitoring platform.\n\nThe system integrates data from CoinDesk, CoinMarketCap, CoinGecko, Coinglass, and Bitcoin Magazine Pro APIs. Automated workflows collect, process, and organize information from multiple sources to provide a consistent and up-to-date view of market conditions.\n\nThe dashboard enables investors, analysts, and researchers to track price action, funding rates, open interest, network activity, and broader market sentiment without switching between multiple tools and data providers.",
-    "tags": ["dashboard", "tools"]
+    "tags": ["dashboard"]
   }
 
 ]
