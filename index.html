@@ -137,17 +137,21 @@ window.addEventListener('load', function() {
         <!-- Header -->
 <header class="max-w-7xl mx-auto px-6 py-5">
     <div class="flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" fill="#6366f1" opacity="0.9"/>
-                  <path d="M12 2L12 22" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
-                  <path d="M2 8L22 8" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
-                  <path d="M2 16L22 16" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
-                </svg>
-            </div>
-            <span class="text-lg font-semibold tracking-tight text-navy-900">coreFlows</span>
-        </a>
+<a href="/" class="flex items-center gap-3">
+    <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connection Lines -->
+          <path d="M6 9L12 15L18 9" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Node 1 (Trigger/Input) -->
+          <circle cx="6" cy="9" r="2.5" fill="#6366f1"/>
+          <!-- Node 2 (Action/Logic) -->
+          <circle cx="12" cy="15" r="2.5" fill="#6366f1"/>
+          <!-- Node 3 (Output) -->
+          <circle cx="18" cy="9" r="2.5" fill="#6366f1"/>
+        </svg>
+    </div>
+    <span class="text-lg font-semibold tracking-tight text-navy-900">coreFlows</span>
+</a>
         <nav class="hidden sm:flex items-center gap-8 text-sm text-gray-500">
             <a href="/" class="hover:text-navy-900 transition-colors">Home</a>
             <a href="/#work" class="hover:text-navy-900 transition-colors">Work</a>
@@ -181,35 +185,35 @@ window.addEventListener('load', function() {
 </div>
 <div class="grid sm:grid-cols-3 lg:grid-cols-3 gap-5">
 
-    <div class="card-premium stat-card p-6">
-        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-            <i class="fas fa-gauge-high text-xl text-accent-500"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Dashboards & Reporting Systems</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-            Operational dashboards and reporting interfaces for finance and B2B
-        </p>
+<div class="card-premium stat-card p-6">
+    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+        <i class="fas fa-chart-line text-xl text-accent-500"></i>
     </div>
+    <h3 class="font-semibold mb-2">Dashboards & Reporting Systems</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">
+        Operational dashboards and reporting interfaces for finance and B2B
+    </p>
+</div>
 
-    <div class="card-premium stat-card p-6">
-        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-            <i class="fas fa-file-powerpoint text-xl text-accent-500"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Internal Tools</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-            Operational interfaces replacing spreadsheets and generic software for finance and B2B operators.
-        </p>
+<div class="card-premium stat-card p-6">
+    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+        <i class="fas fa-gears text-xl text-accent-500"></i>
     </div>
+    <h3 class="font-semibold mb-2">Internal Tools</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">
+        Operational interfaces replacing spreadsheets and generic software for finance and B2B operators.
+    </p>
+</div>
 
-        <div class="card-premium stat-card p-6">
-        <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-            <i class="fas fa-file-powerpoint text-xl text-accent-500"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Workflow Design & Automation</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-            Connecting systems, automating repetitive processes, and adding AI layers to operational workflows.
-        </p>
+<div class="card-premium stat-card p-6">
+    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
+        <i class="fas fa-diagram-project text-xl text-accent-500"></i>
     </div>
+    <h3 class="font-semibold mb-2">Workflow Design & Automation</h3>
+    <p class="text-slate-600 text-sm leading-relaxed">
+        Connecting systems, automating repetitive processes, and adding AI layers to operational workflows.
+    </p>
+</div>
 </div>
     </div>
 </section>
@@ -224,7 +228,7 @@ window.addEventListener('load', function() {
     </div>
 
     <!-- Filter Menu -->
-<div class="flex flex-wrap gap-2 mb-10 justify-between" id="filter-menu">
+<div class="flex flex-wrap gap-2 mb-10 justify-center" id="filter-menu">
     <div class="flex gap-2">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="dashboard">Dashboards</button>
