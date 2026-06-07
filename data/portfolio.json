@@ -1,5 +1,19 @@
 [
-       {
+  
+  {
+    "id": "private-equity-investor-portal-design-development-workflow",
+    "title": "Private Equity Investor Portal Design, Development & Workflow",
+    "imageUrl": "./img/PE_Investor_Portal.png",
+    "tags": ["workflow", "tools"]
+  },
+
+  {
+    "id": "dealflow-internal-crm-designed-specifically-for-vc",
+    "title": "DealFlow - Internal CRM designed specifically for VC",
+    "imageUrl": "./img/CV_DealFlow.png",
+    "tags": ["workflow"]
+  },       
+  {
     "id": "live-global-market-pulse-dashboard-design-development",
     "title": "Live Global Market Pulse Dashboard Design & Development",
     "imageUrl": "./img/Market_Pulse_Dash.png",
@@ -19,22 +33,9 @@
   }, 
   {
     "id": "bitcoin-intelligence-dashboard-design-development",
-    "title": "Bitcoin Intelligence Dashboard Design & Development + Tool",
+    "title": "Bitcoin Intelligence Dashboard Design & Development",
     "imageUrl": "./img/Bitcoin_Dash.png",
     "tags": ["dashboard", "tools"]
-  },
-  
-  {
-    "id": "token-sales-launchpad---token-metrics-dashboard-de",
-    "title": "Workflow and Tool: Token Sales Launchpad - Token Metrics Dashboard Design",
-    "imageUrl": "./img/token-sales-launchpad---token-metrics-dashboard-de.jpg",
-    "tags": ["workflow", "tools"]
-  },
-
-  {
-    "id": "digital-assets-volatility-index:-financial-researc",
-    "title": "WorkflowDigital Assets Volatility Index: Financial Research Report Design",
-    "imageUrl": "./img/digital-assets-volatility-index:-financial-researc.jpg",
-    "tags": ["workflow"]
   }
+
 ]
