@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,100 +29,124 @@
 
     <link rel="stylesheet" href="styles/main.css">
 
-
     <style>
       * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-      body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+      body { 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          background-color: #fafafa;
+          color: #334155;
+      }
+
+      /* Premium Glassmorphism Classes */
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      }
 
       .card-premium {
-        background: #fff;
-        border: 1px solid #e8ecf2;
-        border-radius: 16px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03);
-        transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,1);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          z-index: 10;
       }
       .card-premium:hover {
-        box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.06);
-        transform: translateY(-3px);
+          box-shadow: 0 20px 40px rgba(20, 184, 166, 0.08), inset 0 1px 0 rgba(255,255,255,1);
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.9);
       }
-
-      .stat-card { position: relative; overflow: hidden; }
-      .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #14b8a6, transparent);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .stat-card:hover::before { opacity: 1; }
 
       .text-gradient-accent {
-        background: linear-gradient(135deg, #2dd4bf, #14b8a6, #0f766e);
+        background: linear-gradient(135deg, #0f766e, #14b8a6, #2dd4bf);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
       .section-label {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.15em;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: #14b8a6;
+        color: #0d9488;
       }
 
-      .divider-accent { height: 1px; background: linear-gradient(90deg, transparent, #99f6e4, transparent); opacity: 0.6; }
+      .divider-accent { 
+          height: 1px; 
+          background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.3), transparent); 
+      }
+
+      /* Segmented Control Filter Buttons */
+      #filter-menu {
+          background: rgba(255, 255, 255, 0.5);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255,255,255,0.8);
+          padding: 6px;
+          border-radius: 9999px;
+          display: inline-flex;
+          box-shadow: 0 2px 15px rgba(0,0,0,0.02);
+      }
+      .filter-btn {
+          padding: 0.5rem 1.25rem;
+          border-radius: 9999px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #64748b;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          border: none;
+          background: transparent;
+      }
+      .filter-btn:hover {
+          color: #0d9488;
+      }
+      .filter-btn.active {
+          background: #ffffff;
+          color: #0d9488;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      }
 
       #portfolio-grid > * {
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
-        border: 1px solid #e8ecf2;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03);
-        transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        border: 1px solid rgba(255,255,255,0.9);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         background: #fff;
       }
       #portfolio-grid > *:hover {
-        box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.06);
-        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        transform: translateY(-6px);
       }
       #portfolio-grid > * img {
-        transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         display: block;
         width: 100%;
       }
       #portfolio-grid > *:hover img {
-        transform: scale(1.03);
+        transform: scale(1.04);
       }
-      .filter-btn {
-    padding: 0.4rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid #e2e8f0;
-    background: white;
-    color: #64748b;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.filter-btn:hover {
-    border-color: var(--accent-500, #14b8a6);
-    color: var(--accent-500, #14b8a6);
-}
-
-.filter-btn.active {
-    background: var(--accent-500, #14b8a6);
-    border-color: var(--accent-500, #14b8a6);
-    color: white;
-}
+      
+      /* Orb Animations */
+      @keyframes float {
+          0% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+          100% { transform: translateY(0px) rotate(0deg); }
+      }
+      .animate-float { animation: float 8s ease-in-out infinite; }
+      .animate-float-delayed { animation: float 10s ease-in-out infinite; animation-delay: 2s; }
     </style>
 
 <script>
 window.addEventListener('load', function() {
   if (window.location.hash === '#contact') {
-    // Retry to handle dynamically loaded portfolio images shifting layout
     const attempts = [200, 600, 1200];
     attempts.forEach(delay => {
       setTimeout(() => {
@@ -140,7 +164,6 @@ window.addEventListener('load', function() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-1XVKL87STD');
 </script>
 <script type="text/javascript">
@@ -151,164 +174,172 @@ window.addEventListener('load', function() {
     })(window, document, "clarity", "script", "x3dmzct0yu");
 </script>
 </head>
-<body>
-    <main class="bg-white text-slate-900">
+<body class="relative min-h-screen selection:bg-accent-200">
+    <!-- Global Background Orbs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-teal-100/40 rounded-full blur-[120px] -z-10 pointer-events-none animate-float"></div>
+    <div class="fixed bottom-[-10%] right-[-5%] w-[40%] h-[60%] bg-blue-100/40 rounded-full blur-[120px] -z-10 pointer-events-none animate-float-delayed"></div>
+
+    <main>
         <!-- Header -->
-<header class="max-w-7xl mx-auto px-6 py-5">
-    <div class="flex items-center justify-between">
-<a href="/" class="flex items-center gap-3">
-    <div class="w-9 h-9 rounded-xl bg-accent-50 flex items-center justify-center transition-transform hover:scale-110">
-        <svg class="w-5 h-5 text-accent-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 12C4 12 5.5 7 12 7C18.5 7 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M4 12C4 12 5.5 17 12 17C18.5 17 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="12" cy="12" r="3" fill="currentColor"/>
-        </svg>
-    </div>
-    <span class="text-lg font-semibold tracking-tight text-navy-900">coreFlows</span>
-</a>
-        <nav class="hidden sm:flex items-center gap-8 text-sm text-gray-500">
-            <a href="/" class="hover:text-navy-900 transition-colors">Home</a>
-            <a href="/#work" class="hover:text-navy-900 transition-colors">Work</a>
-        </nav>
-        <a href="#contact" class="px-5 py-2 text-sm font-medium text-white bg-accent-500 rounded-lg hover:bg-accent-600 transition">
-            Contact
-        </a>
-    </div>
-</header>
+        <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+            <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-6 py-3 flex items-center justify-between">
+                <a href="/" class="flex items-center gap-3 group">
+                    <!-- New Minimalist Logo without background -->
+                    <svg class="w-8 h-8 text-accent-500 group-hover:text-accent-600 transition-colors" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 8 8 4 12 4C16 4 20 8 20 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M4 12C4 16 8 20 12 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
+                    </svg>
+                    <!-- Two-toned text -->
+                    <span class="text-xl font-serif font-bold tracking-tight">
+                        <span class="text-slate-900">core</span><span class="text-accent-500">Flows</span>
+                    </span>
+                </a>
+                <nav class="hidden sm:flex items-center gap-8 text-sm font-medium text-slate-600">
+                    <a href="/" class="hover:text-accent-600 transition-colors">Home</a>
+                    <a href="/#work" class="hover:text-accent-600 transition-colors">Work</a>
+                </nav>
+                <a href="#contact" class="px-6 py-2.5 text-sm font-semibold text-white bg-slate-900 rounded-xl hover:bg-accent-600 shadow-lg shadow-slate-900/20 hover:shadow-accent-500/30 transition-all">
+                    Contact
+                </a>
+            </div>
+        </header>
 
-<!-- Hero + Services -->
-<section class="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-accent-50/30 py-16 md:py-24 w-full">
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-    <div class="absolute bottom-0 left-0 w-72 h-72 bg-navy-200/15 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4"></div>
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-300/40 to-transparent"></div>
-    <div class="max-w-7xl mx-auto px-6 relative">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-[56px] font-light leading-[1.1] tracking-tight">
-                Operational systems, workflows,
-                <span class="font-serif font-semibold text-gradient-accent"> and data design</span>
-            </h1>
-            <p class="mt-5 text-lg text-slate-500 leading-relaxed font-light">
-                Dashboards, reporting, and internal tools that connect data, workflows, and decision-making.
-            </p>
-        </div>
+        <!-- Hero + Services -->
+        <section class="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 w-full max-w-7xl mx-auto">
+            <div class="text-center mb-24 max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-[72px] font-serif font-bold leading-[1.05] tracking-tight text-slate-900 mb-8">
+                    Operational systems, workflows,
+                    <span class="text-gradient-accent block mt-2">and data design</span>
+                </h1>
+                <p class="text-xl text-slate-500 leading-relaxed font-medium max-w-2xl mx-auto">
+                    Dashboards, reporting, and internal tools that connect data, workflows, and decision-making.
+                </p>
+            </div>
 
-<div class="flex items-center gap-3 mb-8 justify-center">
-    <div class="divider-accent flex-1"></div>
-    <span class="section-label">What I Do</span>
-    <div class="divider-accent flex-1"></div>
-</div>
-<div class="grid sm:grid-cols-3 lg:grid-cols-3 gap-5">
+            <div class="flex items-center gap-4 mb-12 justify-center">
+                <div class="divider-accent flex-1 max-w-[100px]"></div>
+                <span class="section-label">What I Do</span>
+                <div class="divider-accent flex-1 max-w-[100px]"></div>
+            </div>
+            
+            <div class="grid sm:grid-cols-3 lg:grid-cols-3 gap-8">
+                <div class="card-premium p-8">
+                    <div class="w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-accent-500"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-slate-900">Dashboards & Reporting Systems</h3>
+                    <p class="text-slate-500 text-base leading-relaxed">
+                        Operational dashboards and reporting interfaces for finance and B2B
+                    </p>
+                </div>
 
-<div class="card-premium stat-card p-6">
-    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-        <i class="fas fa-chart-line text-xl text-accent-500"></i>
-    </div>
-    <h3 class="font-semibold mb-2">Dashboards & Reporting Systems</h3>
-    <p class="text-slate-600 text-sm leading-relaxed">
-        Operational dashboards and reporting interfaces for finance and B2B
-    </p>
-</div>
+                <div class="card-premium p-8">
+                    <div class="w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-gears text-2xl text-accent-500"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-slate-900">Internal Tools</h3>
+                    <p class="text-slate-500 text-base leading-relaxed">
+                        Operational interfaces replacing spreadsheets and generic software for finance and B2B operators.
+                    </p>
+                </div>
 
-<div class="card-premium stat-card p-6">
-    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-        <i class="fas fa-gears text-xl text-accent-500"></i>
-    </div>
-    <h3 class="font-semibold mb-2">Internal Tools</h3>
-    <p class="text-slate-600 text-sm leading-relaxed">
-        Operational interfaces replacing spreadsheets and generic software for finance and B2B operators.
-    </p>
-</div>
+                <div class="card-premium p-8">
+                    <div class="w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-diagram-project text-2xl text-accent-500"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-slate-900">Workflow Design & Automation</h3>
+                    <p class="text-slate-500 text-base leading-relaxed">
+                        Connecting systems, automating repetitive processes, and adding AI layers to operational workflows.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<div class="card-premium stat-card p-6">
-    <div class="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center mb-4">
-        <i class="fas fa-diagram-project text-xl text-accent-500"></i>
-    </div>
-    <h3 class="font-semibold mb-2">Workflow Design & Automation</h3>
-    <p class="text-slate-600 text-sm leading-relaxed">
-        Connecting systems, automating repetitive processes, and adding AI layers to operational workflows.
-    </p>
-</div>
-</div>
-    </div>
-</section>
+        <!-- Portfolio -->
+        <section class="max-w-7xl mx-auto px-6 py-20 relative">
+            <div class="flex items-center gap-4 mb-10 justify-center" id="work">
+                <div class="divider-accent flex-1 max-w-[100px]"></div>
+                <span class="section-label">Portfolio</span>
+                <div class="divider-accent flex-1 max-w-[100px]"></div>
+            </div>
 
-<!-- Portfolio -->
-<section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
-    
-    <div class="flex items-center gap-3 mb-8" id="work">
-        <div class="divider-accent flex-1"></div>
-        <span class="section-label">Portfolio</span>
-        <div class="divider-accent flex-1"></div>
-    </div>
-
-    <!-- Filter Menu -->
-<div class="flex flex-wrap gap-2 mb-10 justify-center" id="filter-menu">
-    <div class="flex gap-2">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="dashboard">Dashboards</button>
-        <button class="filter-btn" data-filter="tools">Internal Tools</button>
-        <button class="filter-btn" data-filter="workflow">Workflows</button>
-    </div>
-</div>
-    <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Portfolio items will be inserted here by JavaScript -->
-    </div>
-
-</section>
+            <!-- Filter Menu -->
+            <div class="flex justify-center mb-16">
+                <div id="filter-menu">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+                    <button class="filter-btn" data-filter="tools">Internal Tools</button>
+                    <button class="filter-btn" data-filter="workflow">Workflows</button>
+                </div>
+            </div>
+            
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Portfolio items will be inserted here by JavaScript -->
+            </div>
+        </section>
 
         <!-- Contact -->
-        <section class="bg-slate-50 border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 relative">
-                <div class="flex items-center gap-3 mb-3 justify-center">
-                    <div class="divider-accent flex-1 max-w-[60px]"></div>
-                    <span class="section-label">Contact</span>
-                    <div class="divider-accent flex-1 max-w-[60px]"></div>
-                </div>
-                <h2 id="contact" class="text-3xl font-serif font-semibold mb-4 text-center" style="scroll-margin-top: 100px;">Let's Work Together</h2>
-                <p class="text-slate-600 max-w-2xl mb-8 leading-relaxed text-center mx-auto">
-                    Have a question or a project in mind? Drop a message and I'll get back to you.
-                </p>
+        <section class="py-24 relative mt-12">
+            <div class="absolute inset-0 bg-slate-900 -skew-y-2 origin-top-left -z-10"></div>
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 -z-10"></div>
+            
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <div class="glass-panel !bg-white/10 !border-white/20 !backdrop-blur-2xl rounded-[32px] p-10 md:p-16 text-center text-white shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6 justify-center">
+                        <div class="h-px bg-white/20 flex-1 max-w-[60px]"></div>
+                        <span class="section-label !color-white tracking-[0.3em] opacity-80">Contact</span>
+                        <div class="h-px bg-white/20 flex-1 max-w-[60px]"></div>
+                    </div>
+                    
+                    <h2 id="contact" class="text-4xl md:text-5xl font-serif font-bold mb-6" style="scroll-margin-top: 140px;">Let's Work Together</h2>
+                    <p class="text-slate-300 max-w-xl mx-auto mb-10 text-lg">
+                        Have a question or a project in mind? Drop a message and I'll get back to you.
+                    </p>
 
-                <form id="contact-form" class="max-w-md space-y-4 mx-auto" action="https://formspree.io/f/maqzevaq" method="POST">
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="Your email"
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100"
-                    />
-                    <textarea
-                        name="message"
-                        required
-                        rows="4"
-                        placeholder="Your message"
-                        class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100"
-                    ></textarea>
-                    <button
-                        type="submit"
-                        class="bg-black text-white px-6 py-2 rounded-xl hover:bg-slate-800 transition"
-                    >
-                        Send Message
-                    </button>
-                    <div id="form-status" class="hidden text-sm py-2"></div>
-                </form>
+                    <form id="contact-form" class="max-w-md mx-auto space-y-5 text-left" action="https://formspree.io/f/maqzevaq" method="POST">
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="Your email"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/20 transition-all"
+                        />
+                        <textarea
+                            name="message"
+                            required
+                            rows="4"
+                            placeholder="Your message"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-accent-400 focus:ring-2 focus:ring-accent-400/20 transition-all"
+                        ></textarea>
+                        <button
+                            type="submit"
+                            class="w-full bg-accent-500 text-white font-bold px-6 py-4 rounded-xl hover:bg-accent-400 transition shadow-lg shadow-accent-500/20 mt-2"
+                        >
+                            Send Message
+                        </button>
+                        <div id="form-status" class="hidden text-sm py-2 text-center"></div>
+                    </form>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-slate-500 flex items-center justify-center gap-4 text-center">
-                <div class="w-6 h-6 rounded-md bg-accent-50 flex items-center justify-center transition-transform hover:scale-110">
-                    <svg class="w-4 h-4 text-accent-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 12C4 12 5.5 7 12 7C18.5 7 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M4 12C4 12 5.5 17 12 17C18.5 17 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="12" cy="12" r="3" fill="currentColor"/>
+        <footer class="bg-slate-900 border-t border-white/10 pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-accent-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 8 8 4 12 4C16 4 20 8 20 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M4 12C4 16 8 20 12 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
                     </svg>
                 </div>
-                © <span id="year"></span> coreFlows. All rights reserved.
-                <a href="https://www.linkedin.com/in/dmitri-lant" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-accent-500 transition">
-                    <i class="fab fa-linkedin text-lg"></i>
-                </a>
+                <div class="text-sm text-slate-400 flex items-center gap-4">
+                    © <span id="year"></span> coreFlows. All rights reserved.
+                    <a href="https://www.linkedin.com/in/dmitri-lant" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-accent-400 transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
             </div>
         </footer>
     </main>
