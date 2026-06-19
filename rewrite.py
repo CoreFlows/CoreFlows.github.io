@@ -1,0 +1,144 @@
+import re
+
+with open('index.html', 'r') as f:
+    content = f.read()
+
+# 1. Fonts
+content = re.sub(
+    r'<!-- <link href="https://fonts.googleapis.com/css2\?family=DM\+Serif\+Display[^>]+>\s*-->\s*<link\s*href="https://fonts.googleapis.com/css2\?family=Syne[^>]+>\s*rel="stylesheet">',
+    r'<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">',
+    content
+)
+
+# 2. Tailwind config
+new_tailwind = """    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Plus Jakarta Sans', 'sans-serif'], 
+                        serif: ['Outfit', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    },
+                    colors: {
+                        obsidian: { 800: '#1e293b', 900: '#0f172a', 950: '#0B0F19' },
+                        emerald: { 400: '#34d399', 500: '#10B981', 600: '#059669' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>"""
+content = re.sub(r'<script>\s*tailwind\.config = {[\s\S]*?}\s*</script>', new_tailwind, content, count=1)
+
+# 3. CSS
+new_css = """    <style>
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #0B0F19; color: #f8fafc; }
+        .card-premium { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 15px -3px rgba(0, 0, 0, 0.4); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-premium:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.5); transform: translateY(-4px); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .stat-card { position: relative; overflow: hidden; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #10B981, transparent); opacity: 0; transition: opacity 0.3s; }
+        .stat-card:hover::before { opacity: 1; }
+        .text-gradient-accent { background: linear-gradient(135deg, #34d399, #10B981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #10B981; }
+        .divider-accent { height: 1px; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent); opacity: 0.6; }
+        #portfolio-grid>* { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 15px -3px rgba(0, 0, 0, 0.4); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        #portfolio-grid>*:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.5); transform: translateY(-4px); border: 1px solid rgba(16, 185, 129, 0.3); }
+        #portfolio-grid>* img { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); display: block; width: 100%; }
+        #portfolio-grid>*:hover img { transform: scale(1.03); }
+        .filter-btn { padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); color: #94a3b8; cursor: pointer; transition: all 0.15s ease; }
+        .filter-btn:hover { border-color: #10B981; color: #10B981; background: rgba(16, 185, 129, 0.1); }
+        .filter-btn.active { background: #10B981; border-color: #10B981; color: #fff; }
+    </style>"""
+content = re.sub(r'<style>[\s\S]*?</style>', new_css, content, count=1)
+
+# 4. Body and Main classes
+content = content.replace('<main class="bg-white text-slate-900">', '<main class="bg-transparent text-slate-200">')
+content = content.replace('<body>', '<body class="bg-[#0B0F19] text-slate-200 antialiased selection:bg-emerald-500/30">')
+
+# 5. Header / Logo
+new_header = """        <header class="max-w-7xl mx-auto px-6 py-5 relative z-10">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-obsidian-800 border border-emerald-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.3)] transition-all duration-300">
+                        <svg class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 12C4 12 5.5 7 12 7C18.5 7 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 12C4 12 5.5 17 12 17C18.5 17 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-display font-semibold tracking-tight text-white">core<span class="text-emerald-400">Flows</span></span>
+                </a>
+                <nav class="hidden sm:flex items-center gap-8 text-sm text-slate-400 font-medium">
+                    <a href="/" class="hover:text-emerald-400 transition-colors">Home</a>
+                    <a href="/#work" class="hover:text-emerald-400 transition-colors">Work</a>
+                </nav>
+                <a href="#contact"
+                    class="px-5 py-2.5 text-sm font-medium text-white bg-emerald-600/90 rounded-lg border border-emerald-500 hover:bg-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+        </header>"""
+content = re.sub(r'<header[\s\S]*?</header>', new_header, content, count=1)
+
+# 6. Hero Section
+new_hero = """        <!-- Hero + Services -->
+        <section
+            class="relative overflow-hidden bg-transparent py-20 md:py-32 w-full">
+            <div
+                class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4">
+            </div>
+            <div
+                class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent">
+            </div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-7xl font-display font-semibold leading-[1.1] tracking-tight text-white mb-6">
+                        Automating Finance
+                        <br/>
+                        <span class="text-gradient-accent">Workflows & Systems</span>
+                    </h1>
+                    <p class="mt-6 text-xl text-slate-400 leading-relaxed font-light max-w-2xl mx-auto">
+                        Designing and building financial systems with data automation and workflow orchestration for B2B operations.
+                    </p>
+                </div>"""
+content = re.sub(r'<!-- Hero \+ Services -->\s*<section[\s\S]*?<div class="max-w-7xl mx-auto px-6 relative">\s*<div class="text-center mb-12">[\s\S]*?</div>', new_hero, content, count=1)
+
+# 7. Update other colors in HTML (from text-navy-900, text-slate-500 to text-slate-400 etc)
+content = content.replace('text-slate-600', 'text-slate-400')
+content = content.replace('bg-slate-50', 'bg-obsidian-900/50')
+content = content.replace('border-slate-200', 'border-white/5')
+content = content.replace('border-gray-300', 'border-white/10')
+content = content.replace('bg-accent-50', 'bg-emerald-500/10')
+content = content.replace('text-accent-500', 'text-emerald-400')
+content = content.replace('text-accent-100', 'text-emerald-100')
+content = content.replace('focus:border-accent-500', 'focus:border-emerald-500')
+content = content.replace('focus:ring-accent-100', 'focus:ring-emerald-500/20')
+
+# 8. Contact section background update
+content = content.replace('<section class="bg-obsidian-900/50 border-t border-white/5">', '<section class="relative bg-obsidian-900/40 border-t border-white/5 backdrop-blur-md">')
+
+# 9. Contact form input styles
+new_inputs = """                    <input type="email" name="email" required placeholder="Your email"
+                        class="w-full bg-obsidian-800/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
+                    <textarea name="message" required rows="4" placeholder="Your message"
+                        class="w-full bg-obsidian-800/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"></textarea>
+                    <button type="submit"
+                        class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
+                        Send Message
+                    </button>"""
+content = re.sub(r'<input type="email"[\s\S]*?</button>', new_inputs, content, count=1)
+
+# 10. Footer update
+content = content.replace('bg-indigo-100', 'bg-emerald-500/10')
+content = content.replace('fill="#6366f1"', 'fill="#10B981"')
+content = content.replace('stroke="#6366f1"', 'stroke="#10B981"')
+content = content.replace('text-slate-500', 'text-slate-400')
+
+with open('index.html', 'w') as f:
+    f.write(content)
