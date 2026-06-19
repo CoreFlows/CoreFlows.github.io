@@ -1,59 +1,50 @@
 [
+  
   {
     "id": "private-equity-investor-portal-design-development-workflow",
     "title": "Private Equity Investor Portal Design, Development & Workflow",
     "imageUrl": "./img/PE_Investor_Portal.png",
-    "description": "Investor portal for private equity firms designed as a workflow-driven financial reporting system, centralizing portfolio data, investor communications, and document management into a unified operational flow.\n\nThe system uses Next.js as the interaction layer, Airtable as the structured data layer, and n8n as the orchestration engine coordinating reporting cycles, performance calculations, data synchronization, and automated investor communications.\n\nThis creates an automated reporting workflow that reduces manual coordination, improves data consistency, and ensures timely distribution of fund performance updates.",
-    "tags": [
-      "workflow",
-      "tools"
-    ]
+        "description": "Investor portal designed for private equity firms to centralize portfolio reporting, investor communications, and document management. The frontend was built with Next.js, providing investors with a secure and intuitive experience for accessing fund performance, reports, and updates.\n\nAirtable serves as the operational backbone, managing relational portfolio, investor, and reporting data. Workflow automation built with n8n synchronizes data, processes reporting updates, calculates performance metrics, and distributes notifications automatically.\n\nThe result is a scalable reporting platform that reduces manual administration, improves data consistency, and streamlines investor reporting workflows.",
+    "tags": ["workflow", "tools"]
   },
+
   {
     "id": "dealflow-internal-crm-designed-specifically-for-vc",
     "title": "DealFlow - Internal CRM designed specifically for VC",
-    "description": "Custom deal flow CRM designed for venture capital firms, angel investors, and private equity teams, structured as a workflow-driven investment system for managing opportunities from sourcing and screening through due diligence to final investment decisions.\n\nAThe platform is built around a structured data layer in Airtable, modeling startups, investment stages, founder interactions, and internal evaluations as interconnected entities that power downstream workflow execution.\n\nn8n acts as the orchestration layer, automating stage transitions, triggering notifications, generating tasks, and coordinating reporting workflows as deals progress through the investment lifecycle.\n\nThe system replaces fragmented spreadsheets and generic project management tools with a unified deal management workflow that standardizes decision-making, improves visibility across the pipeline, and enables consistent execution across investment teams.",
+        "description": "Custom deal flow CRM designed for venture capital firms, angel investors, and private equity teams. The platform provides a structured workflow for managing opportunities from sourcing and screening through due diligence and investment decisions.\n\nAirtable powers the underlying data model, storing startup profiles, investment stages, founder interactions, and internal evaluations. Workflow automations built with n8n handle stage transitions, notifications, task creation, and reporting processes.\n\nThe system replaces fragmented spreadsheets and generic project management tools with a centralized investment workflow tailored specifically to deal management operations.",
     "imageUrl": "./img/CV_DealFlow.png",
-    "tags": [
-      "workflow",
-      "tools"
-    ]
-  },
+    "tags": ["workflow", "tools"]
+  },       
   {
     "id": "live-global-market-pulse-dashboard-design-development",
     "title": "Live Global Market Pulse Dashboard Design & Development",
     "imageUrl": "./img/Market_Pulse_Dash.png",
-    "description": "Real-time market intelligence system designed to monitor global market conditions across equities, cryptocurrencies, commodities, and foreign exchange markets through a unified, workflow-driven interface.\n\nThe platform integrates multiple external data sources including CoinGecko, Yahoo Finance, and ExchangeRate APIs, forming a multi-source data pipeline that aggregates pricing, market performance, and macroeconomic signals into a structured dataset.\n\nCustom workflows process, normalize, and enrich incoming data streams before routing them into a unified reporting layer, enabling consistent cross-market analysis and reducing fragmentation across sources.\n\nThe system provides structured views of market sentiment, asset class performance, top movers, relative strength indicators, and economic calendar events, supporting faster interpretation of market dynamics and decision-making across asset classes.",
-    "tags": [
-      "dashboard"
-    ]
-  },
-  {
+    "description": "Real-time market intelligence dashboard designed to monitor global market conditions across equities, cryptocurrencies, commodities, and foreign exchange markets from a single interface.\n\nThe platform integrates multiple external APIs including CoinGecko, Yahoo Finance, and ExchangeRate API to aggregate pricing, market performance, and macroeconomic data. Custom workflows process and normalize incoming datasets before presenting them through a unified reporting experience.\n\nThe dashboard highlights market sentiment, asset class performance, top movers, relative strength indicators, and economic calendar events, helping users quickly identify key market developments.",
+
+    "tags": ["dashboard"]
+  },  
+   {
     "id": "real-estate-investment-portfolio-dashboard-design-development",
     "title": "Real Estate Investment Portfolio Dashboard Design & Development",
     "imageUrl": "./img/RE_Dash.png",
-    "description": "Portfolio management system designed for real estate investors to monitor property performance, portfolio allocation, occupancy metrics, rental income, and investment returns through a structured, workflow-driven reporting environment.\n\nThe platform aggregates data from multiple property and financial sources into a unified data layer, enabling consistent tracking of assets across locations and investment structures.\n\nAutomated workflows synchronize portfolio updates, calculate performance metrics, and generate consolidated reporting views, ensuring that portfolio data remains continuously up to date without manual reconciliation.\n\nThe system provides structured reporting interfaces for portfolio health, enabling faster analysis of performance trends and more informed investment decisions across diversified real estate holdings.",
-    "tags": [
-      "dashboard",
-      "tools"
-    ]
+        "description": "Portfolio management dashboard designed for real estate investors to monitor property performance, portfolio allocation, occupancy metrics, rental income, and investment returns.\n\nThe platform combines data from multiple property and financial data sources into a centralized reporting environment. Workflow automations synchronize portfolio updates, calculate performance metrics, and generate consolidated portfolio views.\n\nInteractive dashboards provide investors with a clear overview of portfolio health, enabling faster analysis and more informed investment decisions across multiple properties and markets.",
+
+    "tags": ["dashboard", "tools"]
   },
   {
     "id": "investment-fund-portfolio-dashboard-design-development",
     "title": "Investment Fund Portfolio Dashboard Design & Development",
     "imageUrl": "./img/Fund_Portfolio_Dash.png",
-    "description": "Portfolio analytics system designed for wealth managers and investment firms to monitor performance, allocation, sector exposure, and portfolio composition across multiple markets through a structured, workflow-driven data environment.\n\nThe platform is built on a Next.js interface layer with Supabase as the underlying data infrastructure, integrating external financial data from Morningstar APIs alongside internal portfolio sources into a unified analytical model.\n\nn8n-based workflow automations orchestrate data synchronization, metric calculations, and reporting updates, ensuring portfolio information remains continuously aligned across systems without manual intervention.\n\nThe system delivers structured analytical views including performance tracking, sector and geographic allocation analysis, and portfolio composition breakdowns, enabling consistent interpretation of investment data across advisors and stakeholders.",
-    "tags": [
-      "dashboard"
-    ]
-  },
+    "description": "Portfolio analytics dashboard designed for wealth managers and investment firms to monitor performance, allocation, sector exposure, and portfolio composition across multiple markets.\n\nBuilt with Next.js and Supabase, the platform integrates data from Morningstar APIs and internal data sources. Workflow automations powered by n8n synchronize portfolio data, calculate key metrics, and maintain up-to-date reporting across the system.\n\nInteractive visualizations, filtering capabilities, geographic allocation views, and performance analytics transform complex investment data into an accessible reporting experience for advisors and investors.",
+
+    "tags": ["dashboard"]
+  }, 
   {
     "id": "bitcoin-intelligence-dashboard-design-development",
     "title": "Bitcoin Intelligence Dashboard Design & Development",
     "imageUrl": "./img/Bitcoin_Dash.png",
     "description": "Bitcoin intelligence dashboard designed to consolidate market, on-chain, derivatives, and sentiment data into a single research and monitoring platform.\n\nThe system integrates data from CoinDesk, CoinMarketCap, CoinGecko, Coinglass, and Bitcoin Magazine Pro APIs. Automated workflows collect, process, and organize information from multiple sources to provide a consistent and up-to-date view of market conditions.\n\nThe dashboard enables investors, analysts, and researchers to track price action, funding rates, open interest, network activity, and broader market sentiment without switching between multiple tools and data providers.",
-    "tags": [
-      "dashboard"
-    ]
+    "tags": ["dashboard"]
   }
+
 ]
