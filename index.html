@@ -7,22 +7,24 @@
     <meta name="description" content="Dashboards, reporting, and internal tools that connect data, workflows, and decision-making.">
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Syne&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Syne', 'serif'] },
-          colors: {
-            navy: { 50:'#f0f3f9', 100:'#dce3f0', 200:'#b9c7e1', 300:'#8da3cb', 400:'#617fb3', 500:'#3d5a8a', 600:'#2c4270', 700:'#1e2f53', 800:'#141f3a', 900:'#0b1224', 950:'#060a14' },
-            accent: { 50:'#eef2ff', 100:'#e0e7ff', 200:'#c7d2fe', 300:'#a5b4fc', 400:'#818cf8', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca', 800:'#3730a3', 900:'#312e81' },
-          }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Plus Jakarta Sans', 'sans-serif'], 
+                        serif: ['Outfit', 'sans-serif'] 
+                    },
+                    colors: {
+                        navy: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a', 950: '#020617' },
+                        accent: { 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4', 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a' },
+                    }
+                }
+            }
         }
-      }
-    }
     </script>
 
     <link rel="stylesheet" href="styles/main.css">
@@ -30,7 +32,7 @@
 
     <style>
       * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-      body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+      body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
 
       .card-premium {
         background: #fff;
@@ -50,14 +52,14 @@
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 2px;
-        background: linear-gradient(90deg, transparent, #6366f1, transparent);
+        background: linear-gradient(90deg, transparent, #14b8a6, transparent);
         opacity: 0;
         transition: opacity 0.3s;
       }
       .stat-card:hover::before { opacity: 1; }
 
       .text-gradient-accent {
-        background: linear-gradient(135deg, #818cf8, #6366f1, #4f46e5);
+        background: linear-gradient(135deg, #2dd4bf, #14b8a6, #0f766e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -68,10 +70,10 @@
         font-weight: 600;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: #6366f1;
+        color: #14b8a6;
       }
 
-      .divider-accent { height: 1px; background: linear-gradient(90deg, transparent, #c7d2fe, transparent); opacity: 0.6; }
+      .divider-accent { height: 1px; background: linear-gradient(90deg, transparent, #99f6e4, transparent); opacity: 0.6; }
 
       #portfolio-grid > * {
         border-radius: 16px;
@@ -106,13 +108,13 @@
 }
 
 .filter-btn:hover {
-    border-color: var(--accent-500, #6366f1);
-    color: var(--accent-500, #6366f1);
+    border-color: var(--accent-500, #14b8a6);
+    color: var(--accent-500, #14b8a6);
 }
 
 .filter-btn.active {
-    background: var(--accent-500, #6366f1);
-    border-color: var(--accent-500, #6366f1);
+    background: var(--accent-500, #14b8a6);
+    border-color: var(--accent-500, #14b8a6);
     color: white;
 }
     </style>
@@ -155,16 +157,11 @@ window.addEventListener('load', function() {
 <header class="max-w-7xl mx-auto px-6 py-5">
     <div class="flex items-center justify-between">
 <a href="/" class="flex items-center gap-3">
-    <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Connection Lines -->
-          <path d="M6 9L12 15L18 9" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Node 1 (Trigger/Input) -->
-          <circle cx="6" cy="9" r="2.5" fill="#6366f1"/>
-          <!-- Node 2 (Action/Logic) -->
-          <circle cx="12" cy="15" r="2.5" fill="#6366f1"/>
-          <!-- Node 3 (Output) -->
-          <circle cx="18" cy="9" r="2.5" fill="#6366f1"/>
+    <div class="w-9 h-9 rounded-xl bg-accent-50 flex items-center justify-center transition-transform hover:scale-110">
+        <svg class="w-5 h-5 text-accent-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12C4 12 5.5 7 12 7C18.5 7 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M4 12C4 12 5.5 17 12 17C18.5 17 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="3" fill="currentColor"/>
         </svg>
     </div>
     <span class="text-lg font-semibold tracking-tight text-navy-900">coreFlows</span>
@@ -301,12 +298,11 @@ window.addEventListener('load', function() {
         <!-- Footer -->
         <footer class="border-t border-slate-200">
             <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-slate-500 flex items-center justify-center gap-4 text-center">
-                <div class="w-6 h-6 rounded-md bg-indigo-100 flex items-center justify-center">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L22 8V16L12 22L2 16V8L12 2Z" fill="#6366f1" opacity="0.9"/>
-                      <path d="M12 2L12 22" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
-                      <path d="M2 8L22 8" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
-                      <path d="M2 16L22 16" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+                <div class="w-6 h-6 rounded-md bg-accent-50 flex items-center justify-center transition-transform hover:scale-110">
+                    <svg class="w-4 h-4 text-accent-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 12 5.5 7 12 7C18.5 7 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 12C4 12 5.5 17 12 17C18.5 17 20 12 20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="3" fill="currentColor"/>
                     </svg>
                 </div>
                 © <span id="year"></span> coreFlows. All rights reserved.
